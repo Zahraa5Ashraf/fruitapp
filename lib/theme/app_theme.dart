@@ -5,5 +5,6 @@ class AppColor {
   static Color text1 = Colors.white;
 
   static Color text2 = Colors.grey;
+  static Color border = const Color(0xFF707070);
   static Color text3 = Colors.black87;
 }

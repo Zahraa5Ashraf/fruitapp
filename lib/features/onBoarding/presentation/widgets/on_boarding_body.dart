@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:fruitapp/features/Auth/presentation/pages/login/login_screen.dart';
 import 'package:fruitapp/features/onBoarding/presentation/widgets/custom_indicator.dart';
 import 'package:fruitapp/features/onBoarding/presentation/widgets/custom_page.dart';
 import 'package:fruitapp/features/sharedWidgets/buttons/generalButton.dart';
 import 'package:fruitapp/features/utils/size_config.dart';
 import 'package:fruitapp/theme/app_theme.dart';
+import 'package:get/get.dart';
 
 class OnBoardingBody extends StatefulWidget {
   const OnBoardingBody({Key? key}) : super(key: key);
@@ -61,6 +63,17 @@ class _OnBoardingBodyState extends State<OnBoardingBody> {
           right: SizeConfig.defaultSize! * 10,
           bottom: SizeConfig.defaultSize! * 10,
           child: GeneralButton(
+              onTap: () {
+                if (pageController!.page! < 2) {
+                  pageController?.nextPage(
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeIn);
+                } else {
+                  Get.to(() => const LoginScreen(),
+                      transition: Transition.rightToLeft,
+                      duration: const Duration(milliseconds: 500));
+                }
+              },
               text: pageController!.hasClients
                   ? pageController?.page == 2
                       ? 'Get Starterd'
